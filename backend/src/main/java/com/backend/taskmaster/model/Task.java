@@ -11,7 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Null;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Task {
@@ -24,14 +24,15 @@ public class Task {
 
 	private String description = "";
 
-	@Null(message = "Due date is required")
+	@NotNull(message = "Due date is required")
 	private LocalDate dueDate;
 	
 	private String username;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "taskPriority_id")
-	@JsonIgnoreProperties("tasks")
+	@NotNull(message = "Task Priority is required")
+	// @JsonIgnoreProperties("tasks")
 	private TaskPriority taskPriority;
 	
 	private boolean isCompleted;

@@ -15,6 +15,7 @@ public class TaskRequest {
 	@NotNull(message = "Due date is required")
 	private LocalDate dueDate;
 
+    @NotNull(message = "Task Priority is required")
 	private TaskPriority taskPriority;
 	
 	protected TaskRequest() {
