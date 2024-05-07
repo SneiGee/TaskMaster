@@ -29,10 +29,10 @@ public class Task {
 	
 	private String username;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "taskPriority_id")
 	@NotNull(message = "Task Priority is required")
-	// @JsonIgnoreProperties("tasks")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "tasks"})
 	private TaskPriority taskPriority;
 	
 	private boolean isCompleted;
